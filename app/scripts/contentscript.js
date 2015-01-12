@@ -1,3 +1,16 @@
 'use strict';
 
-console.log('\'Allo \'Allo! Content script');
+(function () {
+  
+  var app = {
+
+    init: function () {
+      
+    }
+  };
+
+  if ($(document.body).hasClass('page-dashboard')) {
+    app.init();
+  }
+
+})();
