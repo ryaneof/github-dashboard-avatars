@@ -13,7 +13,8 @@
 
     // update metadata according to the changing of dashboard area DOM, 
     // in case user loaded more news 
-    initObserver: function () {
+    initDashboardObserver: function () {
+
       var self = this;
       var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
@@ -24,13 +25,16 @@
 
       observer.observe(this.elNews, {
         subtree: true,
+        childList: true,
         attributes: true
       });
 
       Object.observe(this.metadata, function (changed) {
-        if (changed[0].name === 'count') {
-          self.changeAlertAvatarsFromIndex(changed[0].oldValue + 1);
-        }
+        changed.forEach(function (changing) {
+          if (changing.name === 'count') {
+            self.changeAlertAvatarsFromIndex(changing.oldValue);
+          }
+        });
       });
     },
 
@@ -133,8 +137,8 @@
       this.metadata.alerts = this.elNews.querySelectorAll('.alert');
       this.metadata.count = this.metadata.alerts.length;
 
+      this.initDashboardObserver();
       this.changeAlertAvatarsFromIndex(0);
-      this.initObserver();
     }
   };
 
