@@ -1,8 +1,8 @@
 {
-  "name": "__MSG_appName__",
+  "name": "Github Dashboard Avatars",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "__MSG_appDescription__",
+  "description": "Control the avatars on your Github dashboard.",
   "icons": {
     "16": "images/icon-16.png",
     "128": "images/icon-128.png"
@@ -18,8 +18,7 @@
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*"
+        "https://*.github.com/*"
       ],
       "css": [
         "styles/main.css"
@@ -33,7 +32,6 @@
   ],
   "permissions": [
     "tabs",
-    "http://*/*",
-    "https://*/*"
+    "https://*.github.com/*"
   ]
 }

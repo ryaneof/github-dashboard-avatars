@@ -1,0 +1,1 @@
+## A simple Chrome Extension which controls the avatars on your Github dashboard.
