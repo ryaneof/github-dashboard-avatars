@@ -1,6 +1,6 @@
 'use strict';
 
-(function ($) {
+(function ($, chrome) {
   
   var app = {
     
@@ -56,9 +56,11 @@
       avatarPool.forEach(function (raw) {
         user = raw.user;
         $el = raw.$el;
-        
-        $el.css('paddingLeft', '24px');
-        $(self.makeSingleAvatarHTMLStr(user)).insertBefore($el);
+
+        if (self.displayAllAvatars) {
+          $el.css('paddingLeft', '24px');
+          $(self.makeSingleAvatarHTMLStr(user)).insertBefore($el);
+        }
 
         if (userElemMap.hasOwnProperty(user)) {
           userElemMap[user].push($el);
@@ -66,6 +68,10 @@
           userElemMap[user] = [$el];
         }
       });
+
+      if (!this.displayAllAvatars) {
+        return;
+      }
 
       // make requests, get avatar from Github
       var users = Object.keys(userElemMap).map(function (userName) {
@@ -104,6 +110,10 @@
       $el.find('.details img').hide();
       $el.find('.details blockquote').css('paddingLeft', '0px');
 
+      if (!this.displayAllAvatars) {
+        $el.find('.commits ul').css('paddingLeft', '0px');
+      }
+
       return res;
     },
 
@@ -134,11 +144,17 @@
     },
 
     init: function () {
-      this.metadata.alerts = this.elNews.querySelectorAll('.alert');
-      this.metadata.count = this.metadata.alerts.length;
+      var self = this;
 
-      this.initDashboardObserver();
-      this.changeAlertAvatarsFromIndex(0);
+      // get display mode ['all' || 'none'], might be set at options page
+      chrome.runtime.sendMessage({method: 'getStorage', key: 'display'}, function (response) {
+        self.displayAllAvatars = (response.data !== 'none');
+        self.metadata.alerts = self.elNews.querySelectorAll('.alert');
+        self.metadata.count = self.metadata.alerts.length;
+
+        self.initDashboardObserver();
+        self.changeAlertAvatarsFromIndex(0);
+      });
     }
   };
 
@@ -146,4 +162,4 @@
     app.init();
   }
 
-})(window.jQuery);
+})(window.jQuery, window.chrome);
