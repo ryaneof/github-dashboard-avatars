@@ -111,6 +111,7 @@
       $el.find('.details blockquote').css('paddingLeft', '0px');
 
       if (!this.displayAllAvatars) {
+        $el.find('.commits').css('paddingLeft', '0px');
         $el.find('.commits ul').css('paddingLeft', '0px');
       }
 

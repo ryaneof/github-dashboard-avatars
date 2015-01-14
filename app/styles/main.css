@@ -1,4 +1,4 @@
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ryan\/github\/github-dashboard-avatars\/app\/styles\/main\.scss}line{font-family:\000035}}
+/* line 5, main.scss */
 .options-page {
   font-family: 'Helvetica Neue', sans-serif;
   margin: 50px auto;
@@ -7,11 +7,11 @@
   background-color: #fafafa;
   border-radius: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ryan\/github\/github-dashboard-avatars\/app\/styles\/main\.scss}line{font-family:\0000313}}
+/* line 13, main.scss */
 .options-page p {
   font-size: 16px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ryan\/github\/github-dashboard-avatars\/app\/styles\/main\.scss}line{font-family:\0000316}}
+/* line 16, main.scss */
 .options-page p.saved {
   font-size: 14px;
   color: #cccccc;

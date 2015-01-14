@@ -150,7 +150,7 @@ module.exports = function (grunt) {
         options: {
           cssDir: '<%= config.app %>/styles',
           generatedImagesDir: '<%= config.app %>/images/generated',
-          debugInfo: true
+          debugInfo: false
         }
       },
       dist: {
