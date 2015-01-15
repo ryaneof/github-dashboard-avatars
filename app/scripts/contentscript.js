@@ -50,6 +50,10 @@
         avatarPool = avatarPool.concat(this.dismemberSingleAlert($(this.metadata.alerts[i])));
       }
 
+      if (!this.displayAllAvatars) {
+        return;
+      }
+
       // rebuild user <=> elem arr map
       var user, $el;
 
@@ -57,10 +61,8 @@
         user = raw.user;
         $el = raw.$el;
 
-        if (self.displayAllAvatars) {
-          $el.css('paddingLeft', '24px');
-          $(self.makeSingleAvatarHTMLStr(user)).insertBefore($el);
-        }
+        $el.css('paddingLeft', '24px');
+        $(self.makeSingleAvatarHTMLStr(user)).insertBefore($el);
 
         if (userElemMap.hasOwnProperty(user)) {
           userElemMap[user].push($el);
@@ -68,10 +70,6 @@
           userElemMap[user] = [$el];
         }
       });
-
-      if (!this.displayAllAvatars) {
-        return;
-      }
 
       // make requests, get avatar from Github
       var users = Object.keys(userElemMap).map(function (userName) {
@@ -87,8 +85,21 @@
     },
 
     dismemberSingleAlert: function ($el) {
-
       var res = [];
+
+      $el.find('.details img.gravatar').hide();
+      $el.find('.details blockquote').css('paddingLeft', '0px');
+      $el.find('.commits').css('paddingLeft', '0px');
+      $el.find('.commits img').css({ 'width': '20px', 'height': '20px' });
+
+      if (!this.displayAllAvatars) {
+        
+        $el.find('.details img').hide();
+        $el.find('.commits ul').css('paddingLeft', '0px');
+
+        return res;
+      }
+
       var anchors = $el.find('.title a');
 
       var $elUserName = $(anchors[0]);
@@ -116,17 +127,6 @@
           $el: $repo,
           user: repoUserName
         });
-      }
-
-      // hide pull request / comments avatar, adjust left padding 
-      $el.find('.details img.gravatar').hide();
-      $el.find('.details blockquote').css('paddingLeft', '0px');
-      $el.find('.commits').css('paddingLeft', '0px');
-      $el.find('.commits img').css({ 'width': '20px', 'height': '20px' });
-
-      if (!this.displayAllAvatars) {
-        $el.find('.details img').hide();
-        $el.find('.commits ul').css('paddingLeft', '0px');
       }
 
       return res;
