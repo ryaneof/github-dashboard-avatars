@@ -107,11 +107,13 @@
       }
 
       // hide pull request / comments avatar, adjust left padding 
-      $el.find('.details img').hide();
+      $el.find('.details img.gravatar').hide();
       $el.find('.details blockquote').css('paddingLeft', '0px');
+      $el.find('.commits').css('paddingLeft', '0px');
+      $el.find('.commits img').css({ 'width': '20px', 'height': '20px' });
 
       if (!this.displayAllAvatars) {
-        $el.find('.commits').css('paddingLeft', '0px');
+        $el.find('.details img').hide();
         $el.find('.commits ul').css('paddingLeft', '0px');
       }
 
