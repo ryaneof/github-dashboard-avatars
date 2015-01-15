@@ -89,20 +89,32 @@
     dismemberSingleAlert: function ($el) {
 
       var res = [];
-      var $elUserName = $el.find('.title a:eq(0)');
+      var anchors = $el.find('.title a');
+
+      var $elUserName = $(anchors[0]);
+      var $repo;
+
+      var secondAnchor = anchors[1];
+      var thirdAnchor = anchors[2];
+
+      if ($el.hasClass('push') && !!thirdAnchor) {
+        $repo = $(thirdAnchor);
+      } else {
+        $repo = $(secondAnchor);
+      }
+
       var userName = $elUserName.text();
-      var sourceRepo = $el.find('.title a:eq(1)');
-      var sourceUserName = sourceRepo.text().split('/')[0];
+      var repoUserName = $repo.text().split('/')[0];
 
       res.push({
         $el: $elUserName,
         user: userName
       });
 
-      if (sourceUserName !== userName) {
+      if (repoUserName !== userName) {
         res.push({
-          $el: sourceRepo,
-          user: sourceUserName
+          $el: $repo,
+          user: repoUserName
         });
       }
 
