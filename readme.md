@@ -4,7 +4,7 @@ Built with Yeoman and jQuery.
 
 A simple Chrome Extension which display your Github dashboard avatars appropriately.
 
-Display Options:
+### Display Options
 
 - All Avatars
 
@@ -13,6 +13,18 @@ Display Options:
 - No Avatars
 
 ![](http://cl.ly/image/0j2C2L0b1P0w/download/no-avatars.png)
+
+### Development
+
+Using the [Yeoman Chrome Extension generator](https://github.com/yeoman/generator-chrome-extension)
+
+Requires: `grunt-cli` `bower`
+
+```
+npm i
+bower install
+grunt debug
+```
 
 ### License
 

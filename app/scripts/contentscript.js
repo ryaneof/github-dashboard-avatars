@@ -108,7 +108,7 @@
       var secondAnchor = anchors[1];
       var thirdAnchor = anchors[2];
 
-      if ($el.hasClass('push') && !!thirdAnchor) {
+      if (($el.hasClass('push') || $el.hasClass('create')) && !!thirdAnchor) {
         $repo = $(thirdAnchor);
       } else {
         $repo = $(secondAnchor);
