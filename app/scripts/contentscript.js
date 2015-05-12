@@ -87,6 +87,10 @@
     dismemberSingleAlert: function ($el) {
       var res = [];
 
+      if ($el.hasClass('git_hub')) {
+        return res;
+      }
+
       $el.find('.details img.gravatar').hide();
       $el.find('.details blockquote').css('paddingLeft', '0px');
       $el.find('.commits').css('paddingLeft', '0px');
