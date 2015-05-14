@@ -153,7 +153,7 @@
       var sleepings = this.elNews.querySelectorAll('.generated-sleeping-avatar-img');
 
       users.forEach(function (user) {
-        userAvatarMap[user.login] = user.avatar_url + '&s=20';
+        userAvatarMap[user.login] = user.avatar_url + '&s=80';
       });
 
       [].forEach.call(sleepings, function (el) {
