@@ -1,8 +1,8 @@
-## Github Dashboard Avatars
+## GitHub Dashboard Avatars
 
 Built with Yeoman and jQuery.
 
-A simple Chrome Extension which display your Github dashboard avatars appropriately.
+A simple Chrome Extension which display your GitHub dashboard avatars appropriately.
 
 ### Display Options
 

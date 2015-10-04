@@ -71,7 +71,7 @@
         }
       });
 
-      // make requests, get avatar from Github
+      // make requests, get avatar from GitHub
       var users = Object.keys(userElemMap).map(function (userName) {
         return 'user%3A' + userName;
       });

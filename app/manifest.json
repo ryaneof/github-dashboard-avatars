@@ -1,8 +1,8 @@
 {
-    "name": "Github Dashboard Avatars",
+    "name": "GitHub Dashboard Avatars",
     "version": "0.0.10",
     "manifest_version": 2,
-    "description": "Control the avatars on your Github dashboard.",
+    "description": "Display your Github dashboard avatars appropriately.",
     "icons": {
         "16": "images/icon-16.png",
         "128": "images/icon-128.png"
