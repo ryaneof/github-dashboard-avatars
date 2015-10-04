@@ -138,27 +138,36 @@
 
     makeSingleAvatarHTMLStr: function (user) {
       var str = [
+        '<a href="javascript:;">',
         '<img class="generated-sleeping-avatar-img" ',
         ' data-user="', user, '"',
         ' width="20" height="20" ',
         ' style="position: absolute; box-shadow: 0 1px 0 #fff; border-radius: 2px;',
-        '" />'
+        '" />',
+        '</a>'
       ].join('');
 
       return str;
     },
 
     arouseSleepingAvatars: function (users) {
-      var userAvatarMap = {};
+      var userMap = {};
       var sleepings = this.elNews.querySelectorAll('.generated-sleeping-avatar-img');
 
       users.forEach(function (user) {
-        userAvatarMap[user.login] = user.avatar_url + '&s=80';
+        userMap[user.login] = {
+          avatar_url: user.avatar_url + '&s=80',
+          html_url: user.html_url
+        };
       });
 
       [].forEach.call(sleepings, function (el) {
+        var user = el.dataset.user;
         el.className = '';
-        el.src = (el.dataset.user in userAvatarMap) ? userAvatarMap[el.dataset.user] : 'http://404';
+        if (user in userMap) {
+          el.src = userMap[user].avatar_url;
+          el.parentNode.href = userMap[user].html_url;
+        }
       });
     },
 
