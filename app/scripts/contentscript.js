@@ -104,6 +104,24 @@
         return res;
       }
 
+      if ($el.find('.commits img').length > 0) {
+        var commitImgArr = $el.find('.commits img');
+        for (var i = 0, len = commitImgArr.length; i < len; i++) {
+          var $elCommitAuthor = $(commitImgArr[i].parentNode);
+          var $elCode = $elCommitAuthor.next();
+
+          if (!$elCommitAuthor.attr('title') || !$elCode) {
+            continue;
+          }
+
+          res.push({
+            $el: $elCode,
+            user: $elCommitAuthor.attr('title')
+          });
+          $elCommitAuthor.remove();
+        }
+      }
+
       var anchors = $el.find('.title a');
 
       var $elUserName = $(anchors[0]);

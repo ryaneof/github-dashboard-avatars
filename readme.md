@@ -24,6 +24,10 @@ Requires: `grunt-cli` `bower`
 npm i
 bower install
 grunt debug
+
+// build
+
+grunt build
 ```
 
 ### License
