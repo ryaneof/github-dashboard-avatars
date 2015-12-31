@@ -4,6 +4,8 @@ Built with Yeoman and jQuery.
 
 A simple Chrome Extension which display your GitHub dashboard avatars appropriately.
 
+As for Safari users, please check out this repository: [github-dashboard-avatars-safari](https://github.com/ryaneof/github-dashboard-avatars-safari)
+
 ### Display Options
 
 - All Avatars
