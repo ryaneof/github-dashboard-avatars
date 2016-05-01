@@ -95,6 +95,7 @@
       $el.find('.details blockquote').css('paddingLeft', '0px');
       $el.find('.commits').css('paddingLeft', '0px');
       $el.find('.commits img').css({ 'width': '20px', 'height': '20px' });
+      $el.find('.release-assets').css('paddingLeft', '4px');
 
       if (!this.displayAllAvatars) {
         
@@ -130,10 +131,17 @@
       var secondAnchor = anchors[1];
       var thirdAnchor = anchors[2];
 
-      if (($el.hasClass('push') || $el.hasClass('create')) && !!thirdAnchor) {
+      if (($el.hasClass('push') || $el.hasClass('create') || $el.hasClass('release')) && !!thirdAnchor) {
         $repo = $(thirdAnchor);
       } else {
         $repo = $(secondAnchor);
+      }
+
+      if ($el.hasClass('member_add')) {
+        res.push({
+          $el: $(thirdAnchor),
+          user: $(thirdAnchor).text().split('/')[0]
+        });
       }
 
       var userName = $elUserName.text();
