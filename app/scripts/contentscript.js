@@ -72,16 +72,23 @@
       });
 
       // make requests, get avatar from GitHub
-      var users = Object.keys(userElemMap).map(function (userName) {
+      var users = Object.keys(userElemMap)
+      .filter(function (userName) {
+        return !!userName;
+      })
+      .map(function (userName) {
         return 'user%3A' + userName;
       });
-      var url = 'https://api.github.com/search/users?q=' + users.join('+') + '&per_page=' + users.length;
-  
-      $.get(url, function (res) {
-        if (res.items instanceof Array) {
-          self.arouseSleepingAvatars(res.items);
-        }
-      });
+
+      if (users.length > 0) {
+        var url = 'https://api.github.com/search/users?q=' + users.join('+') + '&per_page=' + users.length;
+
+        $.get(url, function (res) {
+          if (res.items instanceof Array) {
+            self.arouseSleepingAvatars(res.items);
+          }
+        });
+      }
     },
 
     dismemberSingleAlert: function ($el) {
