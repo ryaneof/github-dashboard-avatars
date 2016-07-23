@@ -10,11 +10,11 @@ As for Safari users, please check out this repository: [github-dashboard-avatars
 
 - All Avatars
 
-![](http://cl.ly/image/0F102w1R3w1T/download/all-avatars.png)
+![](https://cloud.githubusercontent.com/assets/525426/17078676/92d0e19c-512b-11e6-8465-1fd263726609.png)
 
 - No Avatars
 
-![](http://cl.ly/image/0j2C2L0b1P0w/download/no-avatars.png)
+![](https://cloud.githubusercontent.com/assets/525426/17078677/92d8b55c-512b-11e6-8ccc-2a0ad7d1f18e.png)
 
 ### Development
 
