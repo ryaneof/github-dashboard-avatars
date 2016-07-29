@@ -121,12 +121,6 @@
           if (!$elCommitAuthor.attr('title') || !$elCode) {
             continue;
           }
-
-          res.push({
-            $el: $elCode,
-            user: $elCommitAuthor.attr('title')
-          });
-          $elCommitAuthor.remove();
         }
       }
 
